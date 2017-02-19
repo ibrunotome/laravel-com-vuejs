@@ -25,7 +25,7 @@
       <nav>
          <div class="nav-wrapper container">
             <a href="#"
-               class="brand-logo left">Padaria</a>
+               class="brand-logo left">Code Admin</a>
             <a href="#"
                data-activates="nav-mobile"
                class="button-collapse"><i class="material-icons">menu</i></a>

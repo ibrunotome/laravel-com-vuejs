@@ -71,7 +71,7 @@
         <footer class="page-footer">
             <div class="footer-copyright">
                 <div class="container">
-                    &copy; {{ date('Y') }} <a class="grey-text text-lighten-4" href="https://brunotome.com">Bruno Tomé</a>
+                    &copy; {{ date('Y') }} <a class="grey-text text-lighten-4" href="https://brunotome.com" target="_blank">Bruno Tomé</a>
                 </div>
             </div>
         </footer>
