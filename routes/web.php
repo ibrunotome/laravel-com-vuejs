@@ -11,7 +11,15 @@
 |
 */
 
+use Illuminate\Support\Facades\Gate;
+
 Route::get('/', function () {
+    if (Gate::allows('access-admin')) {
+        return 'Admin';
+    }
+
+    return 'Not admin';
+
     return view('welcome');
 });
 
