@@ -8556,4 +8556,18 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   }
 }
 
+#app {
+  display: -webkit-box;
+  display: flex;
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+}
+
+main {
+  -webkit-box-flex: 1;
+  flex: 1 0 auto;
+}
+
 /*# sourceMappingURL=admin.css.map */

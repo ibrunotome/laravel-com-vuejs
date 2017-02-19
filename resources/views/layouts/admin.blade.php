@@ -26,43 +26,55 @@
 </head>
 <body>
     <div id="app">
-        @if (Auth::check())
-            <?php $menuConfig = [
-                'name'          => Auth::user()->name,
-                'menus'         => [
-                    [
-                        'name'       => 'Contas a pagar',
-                        'url'        => '/teste',
-                        'dropdownId' => 'teste'
+        <header>
+            @if (Auth::check())
+                <?php $menuConfig = [
+                    'name'          => Auth::user()->name,
+                    'menus'         => [
+                        [
+                            'name'       => 'Contas a pagar',
+                            'url'        => '/teste',
+                            'dropdownId' => 'teste'
+                        ],
+                        [
+                            'name' => 'Contas a receber',
+                            'url'  => '/teste1'
+                        ],
                     ],
-                    [
-                        'name' => 'Contas a receber',
-                        'url'  => '/teste1'
-                    ],
-                ],
-                'menusDropdown' => [
-                    [
-                        'id'    => 'teste',
-                        'items' => [
-                            [
-                                'name' => 'Listar contas',
-                                'url'  => '/listar'
-                            ],
-                            [
-                                'name' => 'Criar conta',
-                                'url'  => '/criar'
+                    'menusDropdown' => [
+                        [
+                            'id'    => 'teste',
+                            'items' => [
+                                [
+                                    'name' => 'Listar contas',
+                                    'url'  => '/listar'
+                                ],
+                                [
+                                    'name' => 'Criar conta',
+                                    'url'  => '/criar'
+                                ]
                             ]
                         ]
-                    ]
-                ],
-                'urlLogout'     => env('URL_ADMIN_LOGOUT'),
-                'crfToken'      => csrf_token()
-            ];
-            ?>
-            <admin-menu :config="{{ json_encode($menuConfig) }}"></admin-menu>
-        @endif
+                    ],
+                    'urlLogout'     => env('URL_ADMIN_LOGOUT'),
+                    'crfToken'      => csrf_token()
+                ];
+                ?>
+                <admin-menu :config="{{ json_encode($menuConfig) }}"></admin-menu>
+            @endif
+        </header>
 
-        @yield('content')
+        <main>
+            @yield('content')
+        </main>
+
+        <footer class="page-footer">
+            <div class="footer-copyright">
+                <div class="container">
+                    &copy; {{ date('Y') }} <a class="grey-text text-lighten-4" href="https://brunotome.com">Bruno Tomé</a>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <!-- Scripts -->
