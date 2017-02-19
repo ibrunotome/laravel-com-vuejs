@@ -11,18 +11,20 @@
 |
 */
 
-use Illuminate\Support\Facades\Gate;
-
 Route::get('/', function () {
-    if (Gate::allows('access-admin')) {
-        return 'Admin';
-    }
-
-    return 'Not admin';
-
     return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', function () {
+    return redirect()->route('admin.home');
+});
+
+Route::group([
+    'prefix'     => 'admin',
+    'middleware' => 'can:access-admin',
+    'as'         => 'admin.'
+], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
