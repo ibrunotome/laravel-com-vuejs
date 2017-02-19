@@ -9,7 +9,6 @@ module.exports = {
         filename: '[name].bundle.js',
         publicPath: '/build/'
     },
-    externals: ['axios'],
     plugins: [
         new webpack.ProvidePlugin({
             'window.$': 'jquery',

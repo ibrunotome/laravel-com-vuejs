@@ -18,7 +18,7 @@ gulp.task('webpack-dev-server', () => {
     let config = mergeWebpack(webpackConfig, webpackDevConfig);
 
     let inlineHot = [
-      'webpack/hot/dev-server',
+        'webpack/hot/dev-server',
         'webpack-dev-server/client?http://localhost:8000'
     ];
 
