@@ -1,37 +1,56 @@
 <template>
-   <ul v-bind:id="o.id" class="dropdown-content" v-for="o in config.menusDropdown">
+   <ul v-bind:id="o.id"
+       class="dropdown-content"
+       v-for="o in config.menusDropdown">
       <li v-for="item in o.items">
          <a v-bind:href="item.url">{{ item.name }}</a>
       </li>
    </ul>
-   <ul id="dropdown-logout" class="dropdown-content">
+   <ul id="dropdown-logout"
+       class="dropdown-content">
       <li>
-          <a :href="config.urlLogout" @click.prevent="goToLogout()">Sair </a>
-          <form id="logout-form" :action="config.urlLogout" method="POST" style="display: none;">
-              <input type="hidden" name="_token" :value="config.crfToken"/>
+          <a :href="config.urlLogout"
+             @click.prevent="goToLogout()">Sair </a>
+          <form id="logout-form"
+                :action="config.urlLogout"
+                method="POST"
+                style="display: none;">
+              <input type="hidden"
+                     name="_token"
+                     :value="config.crfToken" />
           </form>
       </li>
    </ul>
    <div class="navbar-fixed">
       <nav>
          <div class="nav-wrapper container">
-            <a href="#" class="brand-logo left">Code Contas</a>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            <a href="#"
+               class="brand-logo left">Padaria</a>
+            <a href="#"
+               data-activates="nav-mobile"
+               class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                <li v-for="o in config.menus">
-                  <a v-if="o.dropdownId" class="dropdown-button" href="!#" v-bind:data-activates="o.dropdownId">
+                  <a v-if="o.dropdownId"
+                     class="dropdown-button"
+                     href="!#"
+                     v-bind:data-activates="o.dropdownId">
                      {{ o.name }} <i class="material-icons right">arrow_drop_down</i>
                   </a>
-                  <a v-else v-bind:href="o.url">{{ o.name }}</a>
+                  <a v-else
+                     v-bind:href="o.url">{{ o.name }}</a>
                </li>
                <li>
-                  <a class="dropdown-button" href="!#" data-activates="dropdown-logout">
+                  <a class="dropdown-button"
+                     href="!#"
+                     data-activates="dropdown-logout">
                      {{ config.name }} <i class="material-icons right">arrow_drop_down</i>
                   </a>
                </li>
             </ul>
 
-            <ul id="nav-mobile" class="side-nav">
+            <ul id="nav-mobile"
+                class="side-nav">
                <li v-for="o in config.menus">
                   <a v-bind:href="o.url">{{ o.name }}</a>
                </li>
@@ -44,7 +63,7 @@
 
 <script type="text/javascript">
    export default{
-       props:{
+       props: {
            config: {
                type: Object,
                default() {
