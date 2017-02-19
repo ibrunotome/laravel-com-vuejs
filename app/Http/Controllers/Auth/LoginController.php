@@ -3,7 +3,9 @@
 namespace Financial\Http\Controllers\Auth;
 
 use Financial\Http\Controllers\Controller;
+use Financial\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -29,11 +31,38 @@ class LoginController extends Controller
 
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    /**
+     * Get the credentials of an user.
+     *
+     * @param Request $request
+     *
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        $data = $request->only($this->username(), 'password');
+        $data['role'] = User::ROLE_ADMIN;
+        return $data;
+    }
+
+    /**
+     * Logout the user from the application.
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    protected function logout(Request $request) {
+        $this->guard()->logout();
+        $request->session()->flush();
+        $request->session()->regenerate();
+
+        return redirect(env('URL_ADMIN_LOGIN'));
     }
 }
