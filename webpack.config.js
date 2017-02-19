@@ -1,4 +1,4 @@
-var webpack = require('webpack')
+var webpack = require('webpack');
 
 module.exports = {
     entry: {
@@ -9,6 +9,7 @@ module.exports = {
         filename: '[name].bundle.js',
         publicPath: '/build/'
     },
+    externals: ['axios'],
     plugins: [
         new webpack.ProvidePlugin({
             'window.$': 'jquery',
